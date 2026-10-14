@@ -1,0 +1,4 @@
+aiohttp>=3.11
+anthropic>=0.100
+openai>=1.40
+python-dotenv>=1.0

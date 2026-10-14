@@ -1,0 +1,36 @@
+# ---------- 个人配置（含账号 / API Key）----------
+.env
+scripts/config.bat
+scripts/watchdog.json
+
+# ---------- 插件凭证（含明文 token / cookie）----------
+# 所有 plugins/*.json 都是本地配置，一律不提交；
+# 模板是 plugins/*.json.example，那些会被提交。
+plugins/*.json
+# 换凭证时留下的备份同样含明文 token
+plugins/*.bak_*
+plugins/*.bak
+
+# ---------- 运行期数据 ----------
+# 聊天记录数据库
+data/
+# 插件状态（含你在读课程名、收藏的活动、已推送条目 ID 等）
+plugins/.*_state.json
+plugins/.*_sync.json
+.watchdog_state.json
+
+# ---------- 日志 ----------
+# 日志里有完整聊天正文和 QQ 号，绝不能进版本库
+*.log
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

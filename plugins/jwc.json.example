@@ -1,0 +1,34 @@
+{
+  "_说明": "SJTU 教务处（jwc.sjtu.edu.cn）通知监控配置。复制本文件为 jwc.json 即可。教务处网站是公开的静态网站，不需要登录凭证。",
+  "_怎么用": "改完本文件不用重启机器人，下一轮轮询（≤15 分钟）自动生效；想立刻生效就给机器人发 #教务检查。注意保持 JSON 合法——格式写坏时插件会暂停检查并私聊告警，不会静默少监控。",
+
+  "enabled": true,
+
+  "_间隔说明": "轮询间隔（秒），默认 900 = 15 分钟。教务处发通知不多（一天几条），不建议低于 300。",
+  "poll_interval": 900,
+
+  "_汇总说明": "单轮新增超过这个条数时（比如电脑关机几天后补推），合并成一条汇总而不是逐条刷屏。",
+  "max_push_per_round": 10,
+
+  "_栏目说明": [
+    "教务处「新闻通告」下的 12 个栏目。想少收哪类通知，把对应条目的 enabled 改成 false 即可（注意 JSON 不能有逗号漏写）。",
+    "推送里显示的栏目名取自 name 字段，改 name 只影响显示。",
+    "url 是栏目列表页地址，一般不用改。",
+    "说明：通知通告是聚合栏目，同一条通知若同时出现在聚合页和分栏目页，只会推一次。",
+    "默认关掉了「新闻中心」（微信公众号推文，多为宣传报道）、「教学质量」「语言文字」（都是半年才更一条的冷栏目），以及两个已停更的栏目（非学历教育管理办公室、工会与支部）。需要的话把对应条目改成 true 即可。"
+  ],
+  "sources": [
+    {"name": "通知通告", "url": "https://jwc.sjtu.edu.cn/xwtg/tztg.htm", "enabled": true},
+    {"name": "教学运行", "url": "https://jwc.sjtu.edu.cn/xwtg/jxyx.htm", "enabled": true},
+    {"name": "注册学务", "url": "https://jwc.sjtu.edu.cn/xwtg/zcxw.htm", "enabled": true},
+    {"name": "研究办", "url": "https://jwc.sjtu.edu.cn/xwtg/yjb.htm", "enabled": true},
+    {"name": "教学质量", "url": "https://jwc.sjtu.edu.cn/xwtg/jxzl.htm", "enabled": false},
+    {"name": "综合办", "url": "https://jwc.sjtu.edu.cn/xwtg/zhb.htm", "enabled": true},
+    {"name": "语言文字", "url": "https://jwc.sjtu.edu.cn/xwtg/yywz.htm", "enabled": false},
+    {"name": "通识教育", "url": "https://jwc.sjtu.edu.cn/xwtg/tsjy.htm", "enabled": true},
+    {"name": "教材与公共课程建设办公室", "url": "https://jwc.sjtu.edu.cn/xwtg/jcyggkcjsbgs.htm", "enabled": true},
+    {"name": "新闻中心", "url": "https://jwc.sjtu.edu.cn/xwtg/xwzx.htm", "enabled": false},
+    {"name": "非学历教育管理办公室", "url": "https://jwc.sjtu.edu.cn/xwtg/fxljyglbgs.htm", "enabled": false},
+    {"name": "工会与支部", "url": "https://jwc.sjtu.edu.cn/xwtg/ghyzb.htm", "enabled": false}
+  ]
+}

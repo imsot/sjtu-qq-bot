@@ -1,0 +1,21 @@
+{
+  "_说明": "看门狗的本机配置。复制成 watchdog.json 后按需修改（watchdog.json 已被 .gitignore 忽略）。整个文件都可以不存在——缺省时看门狗会自动推断：bot_dir = 本仓库根目录，python = 当前解释器，napcat 不管、桌面通知不发。",
+
+  "_napcat_dir": "NapCat.Shell 目录的绝对路径。留空 = 看门狗完全不管理 NapCat，只负责让 bot 活着。",
+  "napcat_dir": "C:/NapCat/NapCat.Shell",
+
+  "_bot_dir": "机器人仓库根目录（含 main.py）。留空 = 自动取本脚本所在目录的上一级。",
+  "bot_dir": "",
+
+  "_python": "启动机器人用哪个 Python。留空 = 用当前跑看门狗的解释器。",
+  "python": "",
+
+  "_bot_qq": "机器人登录用的 QQ 号（重启 NapCat 时作为 -q 参数传给它）。",
+  "bot_qq": "100000000",
+
+  "_ws_port": "OneBot v11 正向 WebSocket 端口，要和 NapCat 网络配置、.env 的 WS_URL 一致。",
+  "ws_port": 3001,
+
+  "_notify_ps1": "桌面 Toast 通知脚本的路径（需要能接收 -Title / -Message 两个参数）。留空 = 不弹窗，只在日志里留痕。",
+  "notify_ps1": ""
+}

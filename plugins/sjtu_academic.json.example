@@ -1,0 +1,46 @@
+{
+  "_说明": "SJTU 第二课堂（activity.sjtu.edu.cn）活动监控配置。复制本文件为 sjtu_academic.json 后填写。sjtu_academic.json 含登录凭证，已被 .gitignore 忽略。",
+
+  "_换token推荐用法": [
+    "⚠️ 这个平台的 token 有效期只有 24 小时，且没有刷新令牌机制，基本每天都要换一次。",
+    "机器人会在过期前若干小时私聊提醒你（提前量见下面 expiry_warn_before_hours）。",
+    "",
+    "收到提醒后，两步搞定，不用改这个文件、不用重启：",
+    "1. 浏览器登录 https://activity.sjtu.edu.cn → F12 → Console，执行：",
+    "     copy(document.cookie.split(';').map(s=>s.trim()).find(s=>s.startsWith('IMPSA-Token=')).slice(12))",
+    "   ⚠️ token 存在 cookie 里（非 httpOnly），不在 localStorage——找 Local Storage 是找不到的。",
+    "   （copy() 会把 token 复制到剪贴板）",
+    "2. 在 QQ 私聊里发给机器人：",
+    "     #二课token 粘贴的内容",
+    "   机器人会先实测一次（解 JWT 看过没过期 + 真拉一次活动列表），",
+    "   确认可用才写入本文件，然后回你一条带有效期的确认消息。",
+    "",
+    "注意：#二课token 只在私聊里生效；万一手滑发到群里，机器人会尝试撤回该消息。"
+  ],
+
+  "enabled": true,
+  "base_url": "https://activity.sjtu.edu.cn",
+  "token": "",
+
+  "_推送范围说明": "only_open=true 时只推送处于「可报名」状态的新活动，已结束/已截止的不推。",
+  "only_open": true,
+
+  "_类型筛选说明": "留空 [] 表示关注所有活动类型。想只盯某几类时，填入 activity_type_id 数字，例如 [2, 5]。发 #二课类型 可以让机器人列出当前所有类型及编号。",
+  "activity_types": [],
+
+  "_收藏提醒说明": "对你在平台上【收藏】的活动，在它的【报名开始】时间前 1 天 / 1 小时 / 10 分钟分别私聊提醒你，提醒精确到分钟。只盯报名还没开始的活动；报名已开始、或没有报名时间（registration_time 为空）的活动会被自动跳过。改 false 可关闭。发 #二课收藏 看全部收藏及各自的报名开始时间，发 #二课提醒 只看到点会提醒的那几个。",
+  "remind_collected": true,
+
+  "_自动同步说明": "打开这项后，机器人会在本机 127.0.0.1 上开一个小接口，配合浏览器用户脚本（Tampermonkey）自动接收新 token——你只要用浏览器打开过第二课堂网站，token 就会自动同步，不用再手动复制粘贴。发 #二课同步 看安装步骤。只监听回环地址、需要密钥、且只放行 activity.sjtu.edu.cn，别的网页写不进来。改 false 可关闭（关闭后手动 #二课token 照常可用）。",
+  "sync_enabled": true,
+  "sync_port": 37218,
+
+  "_同步密钥说明": "本地接口的访问密钥，首次使用时会自动生成并写在这里，不用手动填（用户脚本会自动带上它）。",
+  "sync_secret": "",
+
+  "_轮询间隔说明": "轮询间隔（秒），默认 900 = 15 分钟。不建议低于 300，避免给学校服务器压力、也降低账号被风控的可能。",
+  "poll_interval": 900,
+
+  "_过期提醒说明": "距 token 过期不足这么多小时就私聊提醒你换 token。因为是 24 小时有效期，设成 3 表示大约每天在你该换的时间点前 3 小时提醒一次。设大一点（如 12）会有更充裕的操作时间。同一个 token 只提醒一次。",
+  "expiry_warn_before_hours": 3
+}

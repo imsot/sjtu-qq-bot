@@ -1,0 +1,29 @@
+{
+  "_说明": "SJTU Canvas 教务监控配置。复制本文件为 canvas.json 后填写。canvas.json 含凭证，已被 .gitignore 忽略，请勿外传。",
+
+  "_怎么拿token": [
+    "1. 在浏览器（Edge/Chrome）登录 https://oc.sjtu.edu.cn",
+    "2. 打开 https://oc.sjtu.edu.cn/profile/settings",
+    "3. 找到 Approved Integrations / 已批准的集成 → + New Access Token / 新建访问令牌",
+    "4. 生成后立刻复制（只显示一次），有效期尽量选最长，粘贴到下面 token 字段",
+    "5. 保存本文件后发 #Canvas检查 即可生效（不用重启机器人）",
+    "注意：Canvas 对学生账号签发的 token 最长 120 天，到期需重新签发。"
+  ],
+
+  "enabled": true,
+  "base_url": "https://oc.sjtu.edu.cn",
+
+  "token": "",
+
+  "_cookie备选说明": "若上面那个按钮不存在（学校关闭了自助签发），改用下面这条：浏览器 F12 → Application → Cookies → https://oc.sjtu.edu.cn → 复制 canvas_session 的值，填成 canvas_session=粘贴的值。cookie 数天到数周就会过期，体验不如 token。",
+  "cookie": "",
+
+  "_监测开关说明": "files 默认关闭：模块(modules)通常已覆盖课件，而 files 会包含老师批量上传的素材，噪音较大。想跟踪所有原始文件就改成 true。",
+  "watch": {
+    "announcements": true,
+    "assignments": true,
+    "modules": true,
+    "files": false,
+    "grades": true
+  }
+}

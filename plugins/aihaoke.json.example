@@ -1,0 +1,33 @@
+{
+  "_说明": "知途好课(sjtu.aihaoke.net)任务监控配置。复制本文件为 aihaoke.json 后填写。aihaoke.json 含登录凭证，已被 .gitignore 忽略，请勿外传。",
+
+  "_怎么拿token": [
+    "装了自动同步脚本的话不用管这里（见 #好课同步）——浏览器登录一次，脚本会把新 token 推给机器人。",
+    "手工换的话：",
+    "1. 在浏览器(Edge/Chrome)登录 https://sjtu.aihaoke.net",
+    "2. F12 → Network(网络) → F5 刷新",
+    "3. 点任意一条路径含 /api/ 的请求 → Request Headers",
+    "4. 复制 Authorization 的值，即 'Bearer xxxxx' 里 xxxxx 那一段，粘到下面的 token",
+    "   注意：haoke-token 这个 cookie 是 HttpOnly，但 DevTools 的 Application → Cookies",
+    "   面板里仍能看到它的值，两条路都行。",
+    "5. 保存本文件后发 #好课检查 即可生效(不用重启)"
+  ],
+
+  "enabled": true,
+  "base_url": "https://sjtu.aihaoke.net",
+  "token": "",
+
+  "_续期说明": "本平台的会话续期机制经实测不可用（前端 tokenLogin 依赖的 cookie haoke-auto-login 服务端从不下发，queryCurrentUserInfo 返回的 ticket 又是一次性的）。因此保持 false，凭证改由浏览器用户脚本自动推送（见 #好课同步）。",
+  "auto_refresh": false,
+  "refresh_every_hours": 12,
+  "ticket": "",
+
+  "_同步说明": "浏览器用户脚本自动同步：插件在 127.0.0.1 上开个小接口接收脚本推来的 token。sync_secret 会自动生成，不用手填；换端口改 sync_port。",
+  "sync_enabled": true,
+  "sync_port": 37219,
+
+  "_courses说明": "要监测的课程 classId(整数)。用 #好课课程 命令可以列出你所有课程及对应的 classId。留空数组表示暂不监测任何课程。",
+  "courses": [],
+
+  "sync_secret": ""
+}

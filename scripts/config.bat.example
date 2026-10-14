@@ -1,0 +1,10 @@
+REM ============================================================
+REM  Copy this file to config.bat and adjust. config.bat is gitignored.
+REM  KEEP THIS FILE PURE ASCII - cmd parses .bat as GBK,
+REM  and UTF-8 Chinese in a batch file will break the command lines.
+REM ============================================================
+
+REM Python interpreter used to launch the bot / watchdog.
+REM Leave as "python" if it is on your PATH; otherwise use a full path, e.g.
+REM   set BOT_PYTHON=D:\Python\python.exe
+set BOT_PYTHON=python

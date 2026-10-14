@@ -1,0 +1,10 @@
+{
+  "_说明": "B站更新提醒配置。复制本文件为 bilibili.json 后填写。bilibili.json 含凭证，已被 .gitignore 忽略。",
+  "_怎么拿sessdata": [
+    "推荐：双击 scripts/bili_login.bat，扫码登录后凭证会自动写入 bilibili.json。",
+    "手动：浏览器登录 bilibili.com → F12 → Application/应用程序 → Cookie → https://www.bilibili.com",
+    "      → 复制 SESSDATA 的值填到下面。sessdata 留空则本插件停用。"
+  ],
+  "sessdata": "",
+  "_推送时间": "每天推送一次，时间在 plugins/bilibili.py 顶部的 PUSH_HOUR / PUSH_MINUTE 常量里改"
+}
